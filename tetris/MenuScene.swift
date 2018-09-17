@@ -53,11 +53,11 @@ class MenuScene: SKScene {
 
 extension SKShapeNode {
     func shapeDidLoseFocus() {
-        fillColor = SKColor.white
+        fillColor = SKColor.gray
     }
 
     func shapeDidGetFocus() {
-        fillColor = SKColor.gray
+        fillColor = SKColor.white
     }
 
     override open var canBecomeFocused: Bool {

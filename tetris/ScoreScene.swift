@@ -1,5 +1,5 @@
 //
-//  GameScene.swift
+//  ScoreScene.swift
 //  tetris
 //
 //  Created by Balint Zsombor Lakatos on 2018. 09. 17..
@@ -7,8 +7,7 @@
 //
 
 import SpriteKit
-import GameplayKit
 
-class GameScene: SKScene {
-
+class ScoreScene: SKScene {
+    
 }

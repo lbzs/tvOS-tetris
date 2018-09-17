@@ -16,6 +16,9 @@
 		50678FC0214F838200E84CF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50678FBF214F838200E84CF7 /* Assets.xcassets */; };
 		50678FCB214F838200E84CF7 /* tetrisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50678FCA214F838200E84CF7 /* tetrisTests.swift */; };
 		50678FD62150058000E84CF7 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50678FD52150058000E84CF7 /* MenuScene.swift */; };
+		50678FD921502D9300E84CF7 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 50678FD821502D9300E84CF7 /* GameScene.sks */; };
+		50678FDB21502E3400E84CF7 /* ScoreScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 50678FDA21502E3400E84CF7 /* ScoreScene.sks */; };
+		50678FDD21502F2D00E84CF7 /* ScoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50678FDC21502F2D00E84CF7 /* ScoreScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,9 @@
 		50678FCA214F838200E84CF7 /* tetrisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tetrisTests.swift; sourceTree = "<group>"; };
 		50678FCC214F838200E84CF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50678FD52150058000E84CF7 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		50678FD821502D9300E84CF7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		50678FDA21502E3400E84CF7 /* ScoreScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ScoreScene.sks; sourceTree = "<group>"; };
+		50678FDC21502F2D00E84CF7 /* ScoreScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,9 +91,12 @@
 			children = (
 				50678FB2214F838000E84CF7 /* AppDelegate.swift */,
 				50678FB4214F838000E84CF7 /* MenuScene.sks */,
+				50678FD821502D9300E84CF7 /* GameScene.sks */,
+				50678FDA21502E3400E84CF7 /* ScoreScene.sks */,
 				50678FB6214F838000E84CF7 /* Actions.sks */,
 				50678FB8214F838000E84CF7 /* GameScene.swift */,
 				50678FD52150058000E84CF7 /* MenuScene.swift */,
+				50678FDC21502F2D00E84CF7 /* ScoreScene.swift */,
 				50678FBA214F838000E84CF7 /* GameViewController.swift */,
 				50678FBC214F838000E84CF7 /* Main.storyboard */,
 				50678FBF214F838200E84CF7 /* Assets.xcassets */,
@@ -187,9 +196,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				50678FBE214F838000E84CF7 /* Main.storyboard in Resources */,
+				50678FD921502D9300E84CF7 /* GameScene.sks in Resources */,
 				50678FB5214F838000E84CF7 /* MenuScene.sks in Resources */,
 				50678FC0214F838200E84CF7 /* Assets.xcassets in Resources */,
 				50678FB7214F838000E84CF7 /* Actions.sks in Resources */,
+				50678FDB21502E3400E84CF7 /* ScoreScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +222,7 @@
 				50678FD62150058000E84CF7 /* MenuScene.swift in Sources */,
 				50678FBB214F838000E84CF7 /* GameViewController.swift in Sources */,
 				50678FB3214F838000E84CF7 /* AppDelegate.swift in Sources */,
+				50678FDD21502F2D00E84CF7 /* ScoreScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

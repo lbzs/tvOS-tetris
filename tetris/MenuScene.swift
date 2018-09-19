@@ -11,15 +11,14 @@ import SpriteKit
 import GameplayKit
 
 class MenuScene: SKScene {
-    var newGameButton: SKShapeNode?
-    var scoresButton: SKShapeNode?
+    var newGameButton: SKShapeNode!
+    var scoresButton: SKShapeNode!
 
     override func didMove(to view: SKView) {
         newGameButton = childNode(withName: "newGameButton") as? SKShapeNode
-        newGameButton?.isUserInteractionEnabled = true
+        newGameButton.isUserInteractionEnabled = true
         scoresButton = childNode(withName: "scoresButton") as? SKShapeNode
-        scoresButton?.isUserInteractionEnabled = true
-
+        scoresButton.isUserInteractionEnabled = true
         
     }
 
@@ -37,17 +36,16 @@ class MenuScene: SKScene {
     }
 
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
-        guard let firstButton = newGameButton, let secondButton = scoresButton else { return [] }
-        return [firstButton, secondButton]
+        return [newGameButton, scoresButton]
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
             
-        if newGameButton?.isFocused == true{
+        if newGameButton.isFocused == true{
             if let scene = GKScene(fileNamed: "GameScene"), let sceneNode = scene.rootNode as! GameScene?, let view = self.view {
                 view.presentScene(sceneNode)
             }
-        } else if scoresButton?.isFocused == true {
+        } else if scoresButton.isFocused == true {
             if let scene = GKScene(fileNamed: "ScoreScene"), let sceneNode = scene.rootNode as! ScoreScene?, let view = self.view {
                 view.presentScene(sceneNode)
             }

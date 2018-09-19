@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5018224921524CAA005F0196 /* TileSets.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5018224821524CAA005F0196 /* TileSets.sks */; };
+		5041502A2152C0FE009962B0 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504150292152C0FE009962B0 /* Array2D.swift */; };
 		50678FB3214F838000E84CF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50678FB2214F838000E84CF7 /* AppDelegate.swift */; };
 		50678FB5214F838000E84CF7 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 50678FB4214F838000E84CF7 /* MenuScene.sks */; };
 		50678FB7214F838000E84CF7 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 50678FB6214F838000E84CF7 /* Actions.sks */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		5018224821524CAA005F0196 /* TileSets.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TileSets.sks; sourceTree = "<group>"; };
+		504150292152C0FE009962B0 /* Array2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 		50678FAF214F838000E84CF7 /* tetris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tetris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50678FB2214F838000E84CF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50678FB4214F838000E84CF7 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				50678FBA214F838000E84CF7 /* GameViewController.swift */,
 				50678FBC214F838000E84CF7 /* Main.storyboard */,
 				50678FC1214F838200E84CF7 /* Info.plist */,
+				504150292152C0FE009962B0 /* Array2D.swift */,
 			);
 			path = tetris;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50678FB9214F838000E84CF7 /* GameScene.swift in Sources */,
+				5041502A2152C0FE009962B0 /* Array2D.swift in Sources */,
 				50678FD62150058000E84CF7 /* MenuScene.swift in Sources */,
 				50678FBB214F838000E84CF7 /* GameViewController.swift in Sources */,
 				50678FB3214F838000E84CF7 /* AppDelegate.swift in Sources */,

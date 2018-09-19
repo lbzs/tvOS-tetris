@@ -28,40 +28,27 @@ class GameScene: SKScene {
 
     var gameField: SKTileMapNode!
     let columns = 24
-    let rows = 26
+    let rows = 27
+    let width = 40
+    let height = 40
+
     var gameMatrix: Array2D!
+    var pieces = [Piece]()
+
+    var tileSet: SKTileSet!
     var yellowBrick: SKTileGroup!
     var field: SKTileGroup!
-    var pieces = [Piece]()
-    var index = 15
+
+    var index = 15 // for testing
     override func didMove(to view: SKView) {
+        self.view?.preferredFramesPerSecond = 1
 
         gameMatrix = Array2D(columns: columns, rows: rows)
         setupPices()
-        self.view?.preferredFramesPerSecond = 1
-        guard let tileSet = SKTileSet(named: "Tile Sets") else {
-            fatalError("Tile Sets not found")
-        }
+        setupTiles()
 
-        let tileGroups = tileSet.tileGroups
-
-        guard let yellowBrick = tileGroups.first(where: {$0.name == "YellowBrick"}) else {
-            fatalError("No YellowBrick tile definition found")
-        }
-        self.yellowBrick = yellowBrick
-
-        guard let field = tileGroups.first(where: {$0.name == "Field"}) else {
-            fatalError("No Field tile definition found")
-        }
-        self.field = field
-
-        gameField = SKTileMapNode(tileSet: tileSet, columns: 24, rows: 27, tileSize: CGSize(width: 40, height: 40))
-//        gameField.setTileGroup(field, forColumn: 0, row: 0)
-//        gameField.setTileGroup(field, forColumn: 23, row: 26)
-        
+        gameField = SKTileMapNode(tileSet: tileSet, columns: columns, rows: rows, tileSize: CGSize(width: width, height: height))
         addChild(gameField)
-        
-//        place(object: pieces[0], at: (3, 26))
     }
     override func update(_ currentTime: TimeInterval) {
 
@@ -69,13 +56,29 @@ class GameScene: SKScene {
             if canMove(piece: pieces[0], from: (column: 6, row: index), to: (destinationCol: 6, DestinationRow: index - 1)) {
                 move(piece: pieces[0], from: (column: 6, row: index), to: (column: 6, row: index - 1))
                 index -= 1
-                print("hello")
                 
                 updateGameField()
             }
-            
-            
         }
+    }
+
+    func setupTiles() {
+        guard let tileSet = SKTileSet(named: "Tile Sets") else {
+            fatalError("Tile Sets not found")
+        }
+
+        self.tileSet = tileSet
+        let tileGroups = tileSet.tileGroups
+        
+        guard let yellowBrick = tileGroups.first(where: {$0.name == "YellowBrick"}) else {
+            fatalError("No YellowBrick tile definition found")
+        }
+        self.yellowBrick = yellowBrick
+        
+        guard let field = tileGroups.first(where: {$0.name == "Field"}) else {
+            fatalError("No Field tile definition found")
+        }
+        self.field = field
     }
 
     func setupPices() {
@@ -137,15 +140,6 @@ class GameScene: SKScene {
         
         for col in to.destinationCol..<lastColumnIndex {
             for row in to.DestinationRow..<lastRowIndex {
-                
-//                if gameMatrix[col, row] == 0 {
-//                    let number = object[col - to.destinationCol, row - to.DestinationRow]
-//                    if number != 0 {
-//                        gameMatrix[col, row] = number
-//                    }
-//                } else {
-//                    return false
-//                }
                 if gameMatrix[col, row] != 0 && gameMatrix[col, row] != piece.number {return false }
             }
         }
@@ -179,7 +173,6 @@ class GameScene: SKScene {
         for col in 0..<columns {
             for row in 0..<rows {
                 gameField.setTileGroup(getTileForNumber(number: gameMatrix[col, row]), forColumn: col, row: row)
-                print("szia")
             }
         }
     }

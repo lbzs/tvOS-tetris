@@ -7,7 +7,7 @@
 struct Array2D {
     let columns: Int
     let rows: Int
-    private var array: Array<Int>
+    var array: Array<Int>
     
     init(columns: Int, rows: Int) {
         self.columns = columns
@@ -22,5 +22,10 @@ struct Array2D {
         set {
             array[row*columns + column] = newValue
         }
+    }
+
+    mutating func clear() {
+//        array.removeAll(keepingCapacity: true)
+        array = Array<Int>(repeating: 0, count: rows*columns)
     }
 }

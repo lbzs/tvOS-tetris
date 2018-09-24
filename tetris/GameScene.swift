@@ -50,6 +50,9 @@ class GameScene: SKScene {
     var yellowBrick: SKTileGroup!
     var field: SKTileGroup!
 
+    var direction: Direction = .down
+    var previousDirection: Direction = .down
+
     override func didMove(to view: SKView) {
         self.view?.preferredFramesPerSecond = 1
 
@@ -60,21 +63,45 @@ class GameScene: SKScene {
 
         gameField = SKTileMapNode(tileSet: tileSet, columns: columns, rows: rows, tileSize: CGSize(width: width, height: height))
         addChild(gameField)
+        
+        let swipeLeftGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
+        swipeLeftGestureRecognizer.direction = .left
+        view.addGestureRecognizer(swipeLeftGestureRecognizer)
+
+        let swipeRightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
+        swipeRightGestureRecognizer.direction = .right
+        view.addGestureRecognizer(swipeRightGestureRecognizer)
     }
+
+    @objc func swiped(gesture : UISwipeGestureRecognizer) {
+        switch gesture.direction {
+        case UISwipeGestureRecognizerDirection.left:
+            direction = .left
+        case UISwipeGestureRecognizerDirection.right:
+            direction = .right
+        default:
+            return
+        }
+    }
+
     override func update(_ currentTime: TimeInterval) {
 
-        if fallingPiece != nil {
-            print("move")
-            if move(piece: fallingPiece, direction: Direction.down) == .blocked{
-                fallingPiece = nil
-            }
-            updateGameField()
-        } else {
-            print("generate")
+        if previousDirection == direction && direction != .down {
+            direction = .down
+        }
+
+        if fallingPiece == nil {
             fallingPiece = generateNewPiece()
             initiatePosition()
-//            fallingPieceLayer.array.insert(contentsOf: fallingPiece.array.array, at: 230)
         }
+
+        if move(piece: fallingPiece, direction: direction) == .blocked{
+            fallingPiece = nil
+        }
+        updateGameField()
+
+        previousDirection = direction
+        direction = .down
     }
 
     func setupTiles() {
@@ -157,8 +184,8 @@ class GameScene: SKScene {
         var newPositions = [(col: Int,row: Int)]()
 
         // Go through the fallingPieceLayer
-        for col in 0..<fallingPieceLayer!.columns {
-            for row in 0..<fallingPieceLayer!.rows {
+        for col in 0..<columns {
+            for row in 0..<rows {
                 if fallingPieceLayer?[col, row] != 0 {
 
                     // Calculate the new position
@@ -220,11 +247,11 @@ class GameScene: SKScene {
 
         switch piece.array.columns {
         case 2:
-            to = (col: 11, row: 24)
+            to = (col: columns / 2, row: rows - 2)
         case 3:
-            to = (col: 10, row: 23)
+            to = (col: columns / 2 - 2, row: rows - 3)
         case 4:
-            to = (col: 10, row: 22)
+            to = (col: columns / 2 - 2, row: rows - 4)
         default:
             return
         }
@@ -245,7 +272,6 @@ class GameScene: SKScene {
             for row in 0..<rows {
                 gameField.setTileGroup(getTileForNumber(number: solidPieceLayer[col, row]), forColumn: col, row: row)
                 if fallingPieceLayer[col, row] != 0 {
-                    print("falling drawed")
                     gameField.setTileGroup(getTileForNumber(number: fallingPieceLayer[col, row]), forColumn: col, row: row)
                 }
             }

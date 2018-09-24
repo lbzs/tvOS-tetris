@@ -4,15 +4,19 @@
 // The notation Array2D<T> means that this struct is a generic and can
 // hold elements of any type T
 
-struct Array2D {
+class Array2D {
     let columns: Int
     let rows: Int
     var array: Array<Int>
     
-    init(columns: Int, rows: Int) {
+    init(columns: Int, rows: Int, initialNumber: Int) {
         self.columns = columns
         self.rows = rows
-        array = Array<Int>(repeating: 0, count: rows*columns)
+        array = Array<Int>(repeating: initialNumber, count: rows * columns)
+    }
+
+    convenience init(columns: Int, rows: Int) {
+        self.init(columns: columns, rows: rows, initialNumber: 0)
     }
     
     subscript(column: Int, row: Int) -> Int {
@@ -24,8 +28,7 @@ struct Array2D {
         }
     }
 
-    mutating func clear() {
-//        array.removeAll(keepingCapacity: true)
-        array = Array<Int>(repeating: 0, count: rows*columns)
+    func clear(with initialNumber: Int = 0) {
+        array = Array<Int>(repeating: initialNumber, count: rows * columns)
     }
 }

@@ -115,11 +115,16 @@ class GameScene: SKScene {
         case UISwipeGestureRecognizerDirection.right:
             direction = .right
         case UISwipeGestureRecognizerDirection.up:
-            fallingPiece.rotate(direction: .left)
-            updateFallingLayer()
+            if canRotate(direction: .left) {
+                fallingPiece.rotate(direction: .left)
+                updateFallingLayer()
+            }
         case UISwipeGestureRecognizerDirection.down:
-            fallingPiece.rotate(direction: .right)
-            updateFallingLayer()
+            if canRotate(direction: .right) {
+                fallingPiece.rotate(direction: .right)
+                updateFallingLayer()
+            }
+                
         default:
             return
         }
@@ -293,11 +298,25 @@ class GameScene: SKScene {
 
         return MoveResult.moved
     }
-    
+
+    func canRotate(direction: Direction) -> Bool{
+        for col in 0..<fallingPieceLayer.columns {
+            for row in 0..<fallingPieceLayer.rows {
+                if fallingPieceLayer[col, row] != fallingLayerInitialNumber {
+                    if row - biggestPieceLength >= 0 &&
+                        col - biggestPieceLength >= 0 &&
+                        col - biggestPieceLength + fallingPiece!.array.columns - 1 < columns {
+                        return true
+                    }
+
+                    return false
+                }
+            }
+        }
+        return false
+    }
 
     func moveToSolid(piece: Piece) {
-//        guard let firstIndex = fallingPieceLayer.array.firstIndex(of: fallingPiece.number) else { return }
-//        solidPieceLayer.array.insert(contentsOf: fallingPiece.array.array, at: firstIndex)
         for col in 0..<columns {
             for row in 0..<rows {
                 if fallingPieceLayer?[col + biggestPieceLength, row + biggestPieceLength] != fallingLayerInitialNumber && fallingPieceLayer?[col + biggestPieceLength, row + biggestPieceLength] != 0{
@@ -312,16 +331,15 @@ class GameScene: SKScene {
         for col in 0..<fallingPieceLayer.columns {
             for row in 0..<fallingPieceLayer.rows {
                 if fallingPieceLayer?[col, row] != fallingLayerInitialNumber {
-                    if let coord = firstCoordinate {
-                        fallingPieceLayer[col, row] = fallingPiece[col - coord.col, row - coord.row]
-                    } else {
+                    if firstCoordinate == nil {
                         firstCoordinate = (col: col, row: row)
-                        
-                        fallingPieceLayer[col, row] = fallingPiece[col - firstCoordinate!.col, row - firstCoordinate!.row]
                     }
+
+                    fallingPieceLayer[col, row] = fallingPiece[col - firstCoordinate!.col, row - firstCoordinate!.row]
                 }
             }
         }
+        
     }
 
     func initialPosition() {

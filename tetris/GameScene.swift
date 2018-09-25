@@ -245,7 +245,8 @@ class GameScene: SKScene {
                     // Good if the new posiotion is in the game field and there is no other objects
                     if newCoordinate.row < 0 ||
                         (newCoordinate.col < 0 || newCoordinate.col >= columns) ||
-                        solidPieceLayer[newCoordinate.col, newCoordinate.row] != 0 {
+                        (solidPieceLayer[newCoordinate.col, newCoordinate.row] != 0 &&
+                            fallingPieceLayer[coordinate.col, coordinate.row] != 0) {
                         
                         if direction == .down {
                             moveToSolid(piece: piece)

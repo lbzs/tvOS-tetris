@@ -73,6 +73,12 @@ class GameScene: SKScene {
     var fallingPiece: Piece!
 
     var tileSet: SKTileSet!
+    var blueBrick: SKTileGroup!
+    var cyanBrick: SKTileGroup!
+    var greenBrick: SKTileGroup!
+    var orangeBrick: SKTileGroup!
+    var purpleBrick: SKTileGroup!
+    var redBrick: SKTileGroup!
     var yellowBrick: SKTileGroup!
     var field: SKTileGroup!
 
@@ -161,14 +167,44 @@ class GameScene: SKScene {
 
         self.tileSet = tileSet
         let tileGroups = tileSet.tileGroups
-        
-        guard let yellowBrick = tileGroups.first(where: {$0.name == "YellowBrick"}) else {
-            fatalError("No YellowBrick tile definition found")
+
+        guard let blueBrick = tileGroups.first(where: {$0.name == "blue"}) else {
+            fatalError("No blueBrick tile definition found")
+        }
+        self.blueBrick = blueBrick
+
+        guard let cyanBrick = tileGroups.first(where: {$0.name == "cyan"}) else {
+            fatalError("No cyanBrick tile definition found")
+        }
+        self.cyanBrick = cyanBrick
+
+        guard let greenBrick = tileGroups.first(where: {$0.name == "green"}) else {
+            fatalError("No greenBrick tile definition found")
+        }
+        self.greenBrick = greenBrick
+
+        guard let orangeBrick = tileGroups.first(where: {$0.name == "orange"}) else {
+            fatalError("No orangeBrick tile definition found")
+        }
+        self.orangeBrick = orangeBrick
+
+        guard let purpleBrick = tileGroups.first(where: {$0.name == "purple"}) else {
+            fatalError("No purpleBrick tile definition found")
+        }
+        self.purpleBrick = purpleBrick
+
+        guard let redBrick = tileGroups.first(where: {$0.name == "red"}) else {
+            fatalError("No redBrick tile definition found")
+        }
+        self.redBrick = redBrick
+
+        guard let yellowBrick = tileGroups.first(where: {$0.name == "yellow"}) else {
+            fatalError("No yellowBrick tile definition found")
         }
         self.yellowBrick = yellowBrick
         
         guard let field = tileGroups.first(where: {$0.name == "field"}) else {
-            fatalError("No Field tile definition found")
+            fatalError("No field tile definition found")
         }
         self.field = field
     }
@@ -383,12 +419,22 @@ class GameScene: SKScene {
     
     func getTileForNumber(number: Int) -> SKTileGroup {
         switch number {
-        case 0:
-            return field
-        case fallingLayerInitialNumber:
-            return field
-        default:
+        case 1:
+            return cyanBrick
+        case 2:
+            return blueBrick
+        case 3:
+            return orangeBrick
+        case 4:
             return yellowBrick
+        case 5:
+            return greenBrick
+        case 6:
+            return purpleBrick
+        case 7:
+            return redBrick
+        default:
+            return field
         }
     }
 }

@@ -78,12 +78,13 @@ class GameScene: SKScene {
     var previousDirection: Direction = .down
 
     let fallingLayerInitialNumber = 99
+    let biggestPieceLength = 3
 
     override func didMove(to view: SKView) {
         self.view?.preferredFramesPerSecond = 1
 
         solidPieceLayer = Array2D(columns: columns, rows: rows)
-        fallingPieceLayer = Array2D(columns: columns, rows: rows, initialNumber: fallingLayerInitialNumber)
+        fallingPieceLayer = Array2D(columns: columns + biggestPieceLength * 2, rows: rows + biggestPieceLength, initialNumber: fallingLayerInitialNumber)
         setupPices()
         setupTiles()
 
@@ -226,8 +227,8 @@ class GameScene: SKScene {
         var firstCoordinate: (col: Int, row: Int)?
 
         // Go through the fallingPieceLayer
-        for col in 0..<columns {
-            for row in 0..<rows {
+        for col in 0..<fallingPieceLayer.columns {
+            for row in 0..<fallingPieceLayer.rows {
                 if fallingPieceLayer?[col, row] != fallingLayerInitialNumber {
 
                     // Calculate the new position
@@ -243,11 +244,15 @@ class GameScene: SKScene {
                     }
 
                     // Good if the new posiotion is in the game field and there is no other objects
-                    if newCoordinate.row < 0 ||
-                        (newCoordinate.col < 0 || newCoordinate.col >= columns) ||
-                        (solidPieceLayer[newCoordinate.col, newCoordinate.row] != 0 &&
-                            fallingPieceLayer[coordinate.col, coordinate.row] != 0) {
-                        
+                    if newCoordinate.row < biggestPieceLength &&
+                        fallingPieceLayer[coordinate.col, coordinate.row] != 0 ||
+                        (newCoordinate.col < biggestPieceLength && fallingPieceLayer[coordinate.col, coordinate.row] != 0 ||
+                        newCoordinate.col >= fallingPieceLayer.columns - biggestPieceLength && fallingPieceLayer[coordinate.col, coordinate.row] != 0) ||
+                        newCoordinate.col - biggestPieceLength > 0 &&
+                        newCoordinate.row - biggestPieceLength > 0 &&
+                        solidPieceLayer[newCoordinate.col - biggestPieceLength, newCoordinate.row - biggestPieceLength] != 0 &&
+                        fallingPieceLayer[coordinate.col, coordinate.row] != 0 {
+
                         if direction == .down {
                             moveToSolid(piece: piece)
                             fallingPieceLayer.clear(with: fallingLayerInitialNumber)
@@ -257,8 +262,9 @@ class GameScene: SKScene {
                         }
 
                     } else {
+                        
                         if firstCoordinate == nil {
-                            firstCoordinate = (col: col, row: row)
+                            firstCoordinate = (col: newCoordinate.col, row: newCoordinate.row)
                         }
 
                         newPositions.append((newCoordinate.col, newCoordinate.row))
@@ -294,7 +300,7 @@ class GameScene: SKScene {
 //        solidPieceLayer.array.insert(contentsOf: fallingPiece.array.array, at: firstIndex)
         for col in 0..<columns {
             for row in 0..<rows {
-                if fallingPieceLayer?[col, row] != fallingLayerInitialNumber && fallingPieceLayer?[col, row] != 0{
+                if fallingPieceLayer?[col + biggestPieceLength, row + biggestPieceLength] != fallingLayerInitialNumber && fallingPieceLayer?[col + biggestPieceLength, row + biggestPieceLength] != 0{
                     solidPieceLayer[col, row] = piece.number
                 }
             }
@@ -303,8 +309,8 @@ class GameScene: SKScene {
 
     func updateFallingLayer() {
         var firstCoordinate: (col: Int, row: Int)?
-        for col in 0..<columns {
-            for row in 0..<rows {
+        for col in 0..<fallingPieceLayer.columns {
+            for row in 0..<fallingPieceLayer.rows {
                 if fallingPieceLayer?[col, row] != fallingLayerInitialNumber {
                     if let coord = firstCoordinate {
                         fallingPieceLayer[col, row] = fallingPiece[col - coord.col, row - coord.row]
@@ -316,7 +322,6 @@ class GameScene: SKScene {
                 }
             }
         }
-        print(firstCoordinate)
     }
 
     func initialPosition() {
@@ -325,11 +330,11 @@ class GameScene: SKScene {
 
         switch piece.array.columns {
         case 2:
-            to = (col: columns / 2, row: rows - 2)
+            to = (col: fallingPieceLayer.columns / 2, row: fallingPieceLayer.rows - 2)
         case 3:
-            to = (col: columns / 2 - 2, row: rows - 3)
+            to = (col: fallingPieceLayer.columns / 2 - 2, row: fallingPieceLayer.rows - 3)
         case 4:
-            to = (col: columns / 2 - 2, row: rows - 4)
+            to = (col: fallingPieceLayer.columns / 2 - 2, row: fallingPieceLayer.rows - 4)
         default:
             return
         }
@@ -347,8 +352,8 @@ class GameScene: SKScene {
         for col in 0..<columns {
             for row in 0..<rows {
                 gameField.setTileGroup(getTileForNumber(number: solidPieceLayer[col, row]), forColumn: col, row: row)
-                if fallingPieceLayer[col, row] != fallingLayerInitialNumber && fallingPieceLayer[col, row] != 0 {
-                    gameField.setTileGroup(getTileForNumber(number: fallingPieceLayer[col, row]), forColumn: col, row: row)
+                if fallingPieceLayer[col + biggestPieceLength, row + biggestPieceLength] != fallingLayerInitialNumber && fallingPieceLayer[col + biggestPieceLength, row + biggestPieceLength] != 0 {
+                    gameField.setTileGroup(getTileForNumber(number: fallingPieceLayer[col + biggestPieceLength, row + biggestPieceLength]), forColumn: col, row: row)
                 }
             }
         }

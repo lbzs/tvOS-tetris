@@ -59,10 +59,12 @@ enum MoveResult {
 class GameScene: SKScene {
 
     var gameField: SKTileMapNode!
-    let columns = 24
-    let rows = 27
-    let width = 40
-    let height = 40
+    let columns = 12
+    let rows = 22
+    let width = 32
+    let height = 32
+    let scaleX = 1.754
+    let scaleY = 1.524
 
     var solidPieceLayer: Array2D!
     var pieces = [Piece]()
@@ -89,6 +91,8 @@ class GameScene: SKScene {
         setupTiles()
 
         gameField = SKTileMapNode(tileSet: tileSet, columns: columns, rows: rows, tileSize: CGSize(width: width, height: height))
+        gameField.xScale = CGFloat(scaleX)
+        gameField.yScale = CGFloat(scaleY)
         addChild(gameField)
         
         let swipeLeftGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
@@ -163,7 +167,7 @@ class GameScene: SKScene {
         }
         self.yellowBrick = yellowBrick
         
-        guard let field = tileGroups.first(where: {$0.name == "Field"}) else {
+        guard let field = tileGroups.first(where: {$0.name == "field"}) else {
             fatalError("No Field tile definition found")
         }
         self.field = field

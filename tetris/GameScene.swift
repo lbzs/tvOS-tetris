@@ -116,6 +116,10 @@ class GameScene: SKScene {
         let swipeDownGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
         swipeDownGestureRecognizer.direction = .down
         view.addGestureRecognizer(swipeDownGestureRecognizer)
+
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
+        longPressGestureRecognizer.minimumPressDuration = TimeInterval(0.3)
+        view.addGestureRecognizer(longPressGestureRecognizer)
     }
 
     @objc func swiped(gesture : UISwipeGestureRecognizer) {
@@ -138,6 +142,15 @@ class GameScene: SKScene {
         default:
             return
         }
+    }
+
+    @objc func longPress(gesture : UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            view?.preferredFramesPerSecond = 3
+        } else if gesture.state == .ended {
+            view?.preferredFramesPerSecond = 1
+        }
+        
     }
 
     override func update(_ currentTime: TimeInterval) {

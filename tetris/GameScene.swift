@@ -284,12 +284,10 @@ class GameScene: SKScene {
         var positionInPiece = [(col: Int,row: Int)]()
         var firstCoordinate: (col: Int, row: Int)?
 
-        // Go through the fallingPieceLayer
         for col in 0..<fallingPieceLayer.columns {
             for row in 0..<fallingPieceLayer.rows {
                 if fallingPieceLayer?[col, row] != fallingLayerInitialNumber {
 
-                    // Calculate the new position
                     let coordinate = (col: col,row: row)
                     var newCoordinate: (col: Int, row: Int)
                     switch direction {
@@ -301,7 +299,6 @@ class GameScene: SKScene {
                         newCoordinate = (coordinate.col , coordinate.row - 1)
                     }
 
-                    // Good if the new posiotion is in the game field and there is no other objects
                     if newCoordinate.row < biggestPieceLength &&
                         fallingPieceLayer[coordinate.col, coordinate.row] != 0 ||
                         (newCoordinate.col < biggestPieceLength && fallingPieceLayer[coordinate.col, coordinate.row] != 0 ||
@@ -334,10 +331,6 @@ class GameScene: SKScene {
         }
 
         fallingPieceLayer.clear(with: fallingLayerInitialNumber)
-//        for (index, position) in newPositions.enumerated() {
-////            fallingPieceLayer[position.col, position.row] = piece.number
-//            fallingPieceLayer[position.col, position.row] = piece[newCoordinate.col - firstCoordinate!.co ]
-//        }
 
         var index = 0
         for col in 0..<piece.array.columns {

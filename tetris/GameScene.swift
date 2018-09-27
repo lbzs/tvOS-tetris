@@ -377,6 +377,7 @@ class GameScene: SKScene {
                 }
             }
         }
+        checkFullLines()
     }
 
     func updateFallingLayer() {
@@ -393,6 +394,27 @@ class GameScene: SKScene {
             }
         }
         
+    }
+
+    private func checkFullLines() {
+
+        for row in stride(from: solidPieceLayer.rows - 2, through: 0, by: -1) {
+
+            var fullLine = true
+            for col in 0..<solidPieceLayer.columns {
+                if solidPieceLayer[col, row] == 0 {
+                    fullLine = false
+                }
+            }
+
+            if fullLine {
+                for row in row..<(solidPieceLayer.rows - 1) {
+                    for col in 0..<solidPieceLayer.columns {
+                        solidPieceLayer[col, row] = solidPieceLayer[col, row + 1]
+                    }
+                }
+            }
+        }
     }
 
     func initialPosition() {

@@ -58,6 +58,7 @@ enum MoveResult {
 
 class GameScene: SKScene {
 
+    var score = 0
     var gameField: SKTileMapNode!
     let columns = 12
     let rows = 22
@@ -391,6 +392,7 @@ class GameScene: SKScene {
 
     private func checkFullLines() {
 
+        var clearedRows = 0
         for row in stride(from: solidPieceLayer.rows - 2, through: 0, by: -1) {
 
             var fullLine = true
@@ -406,7 +408,20 @@ class GameScene: SKScene {
                         solidPieceLayer[col, row] = solidPieceLayer[col, row + 1]
                     }
                 }
+                clearedRows += 1
             }
+        }
+
+        score += clearedRows / 4 * 800
+        switch clearedRows % 4 {
+        case 1:
+            score += 100
+        case 2:
+            score += 300
+        case 3:
+            score += 500
+        default:
+            score += 0
         }
     }
 

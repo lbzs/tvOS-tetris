@@ -95,6 +95,8 @@ class GameScene: SKScene {
     let fallingLayerInitialNumber = 99
     let biggestPieceLength = 3
 
+    var gameOver = false
+
     override func didMove(to view: SKView) {
         self.view?.preferredFramesPerSecond = 1
 
@@ -169,29 +171,31 @@ class GameScene: SKScene {
 
     override func update(_ currentTime: TimeInterval) {
 
-        if previousDirection == direction && direction != .down {
+        if !gameOver {
+            if previousDirection == direction && direction != .down {
+                direction = .down
+            }
+            
+            if nextFallingPiece == nil {
+                if fallingPiece == nil {
+                    fallingPiece = generateNewPiece()
+                    initialPosition()
+                }
+                
+                nextFallingPiece = generateNewPiece()
+                updateNextPieceTileMap()
+            }
+            
+            if move(piece: fallingPiece, direction: direction) == .blocked{
+                fallingPiece = nextFallingPiece
+                initialPosition()
+                nextFallingPiece = nil
+            }
+            updateGameField()
+            
+            previousDirection = direction
             direction = .down
         }
-
-        if nextFallingPiece == nil {
-            if fallingPiece == nil {
-                fallingPiece = generateNewPiece()
-                initialPosition()
-            }
-
-            nextFallingPiece = generateNewPiece()
-            updateNextPieceTileMap()
-        }
-
-        if move(piece: fallingPiece, direction: direction) == .blocked{
-            fallingPiece = nextFallingPiece
-            initialPosition()
-            nextFallingPiece = nil
-        }
-        updateGameField()
-
-        previousDirection = direction
-        direction = .down
     }
 
     func updateNextPieceTileMap() {
@@ -482,7 +486,11 @@ class GameScene: SKScene {
         let toLastRow = to.row + piece.array.rows
         for col in to.col..<toLastCol {
             for row in to.row..<toLastRow {
-                fallingPieceLayer[col, row] = fallingPiece[col - to.col, row - to.row]
+                if solidPieceLayer[col - biggestPieceLength, row - biggestPieceLength] == 0 {
+                    fallingPieceLayer[col, row] = fallingPiece[col - to.col, row - to.row]
+                } else {
+                    gameOver = true
+                }
             }
         }
     }

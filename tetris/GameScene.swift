@@ -59,6 +59,9 @@ enum MoveResult {
 class GameScene: SKScene {
 
     var score = 0
+    var lines = 0
+    var scoreLabel: SKLabelNode!
+    var linesLabel: SKLabelNode!
     var gameField: SKTileMapNode!
     let columns = 12
     let rows = 22
@@ -101,6 +104,11 @@ class GameScene: SKScene {
         gameField.xScale = CGFloat(scaleX)
         gameField.yScale = CGFloat(scaleY)
         addChild(gameField)
+
+        scoreLabel = childNode(withName: "scoreLabel") as? SKLabelNode
+        scoreLabel.text = String(score)
+        linesLabel = childNode(withName: "linesLabel") as? SKLabelNode
+        linesLabel.text = String(lines)
         
         let swipeLeftGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
         swipeLeftGestureRecognizer.direction = .left
@@ -300,12 +308,12 @@ class GameScene: SKScene {
                         newCoordinate = (coordinate.col , coordinate.row - 1)
                     }
 
-                    if newCoordinate.row < biggestPieceLength &&
-                        fallingPieceLayer[coordinate.col, coordinate.row] != 0 ||
+                    if (newCoordinate.row < biggestPieceLength &&
+                        fallingPieceLayer[coordinate.col, coordinate.row] != 0) ||
                         (newCoordinate.col < biggestPieceLength && fallingPieceLayer[coordinate.col, coordinate.row] != 0 ||
                         newCoordinate.col >= fallingPieceLayer.columns - biggestPieceLength && fallingPieceLayer[coordinate.col, coordinate.row] != 0) ||
-                        newCoordinate.col - biggestPieceLength > 0 &&
-                        newCoordinate.row - biggestPieceLength > 0 &&
+                        newCoordinate.col - biggestPieceLength >= 0 &&
+                        newCoordinate.row - biggestPieceLength >= 0 &&
                         solidPieceLayer[newCoordinate.col - biggestPieceLength, newCoordinate.row - biggestPieceLength] != 0 &&
                         fallingPieceLayer[coordinate.col, coordinate.row] != 0 {
 
@@ -423,6 +431,10 @@ class GameScene: SKScene {
         default:
             score += 0
         }
+
+        lines += clearedRows
+        scoreLabel.text = String(score)
+        linesLabel.text = String(lines)
     }
 
     func initialPosition() {

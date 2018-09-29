@@ -22,26 +22,13 @@ class MenuScene: SKScene {
         
     }
 
-    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-        let didLostFocusButton = context.previouslyFocusedItem
-        let didGetFocusButton = context.nextFocusedItem
-        
-        if let button = didLostFocusButton as? SKShapeNode {
-            button.shapeDidLoseFocus()
-        }
-
-        if let button = didGetFocusButton as? SKShapeNode {
-            button.shapeDidGetFocus()
-        }
-    }
-
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
         return [newGameButton, scoresButton]
     }
-    
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-            
-        if newGameButton.isFocused == true{
+
+        if newGameButton.isFocused == true {
             if let scene = GKScene(fileNamed: "GameScene"), let sceneNode = scene.rootNode as! GameScene?, let view = self.view {
                 view.presentScene(sceneNode)
             }
@@ -49,6 +36,21 @@ class MenuScene: SKScene {
             if let scene = GKScene(fileNamed: "ScoreScene"), let sceneNode = scene.rootNode as! ScoreScene?, let view = self.view {
                 view.presentScene(sceneNode)
             }
+        }
+    }
+}
+
+extension SKScene {
+    override open func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        let didLostFocusButton = context.previouslyFocusedItem
+        let didGetFocusButton = context.nextFocusedItem
+        
+        if let button = didLostFocusButton as? SKShapeNode {
+            button.shapeDidLoseFocus()
+        }
+        
+        if let button = didGetFocusButton as? SKShapeNode {
+            button.shapeDidGetFocus()
         }
     }
 }

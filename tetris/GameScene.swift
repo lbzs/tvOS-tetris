@@ -490,6 +490,11 @@ class GameScene: SKScene {
                     fallingPieceLayer[col, row] = fallingPiece[col - to.col, row - to.row]
                 } else {
                     gameOver = true
+                    if let scene = GKScene(fileNamed: "GameOverScene"), let sceneNode = scene.rootNode as! GameOverScene?, let view = self.view {
+                        sceneNode.score = score
+                        sceneNode.lines = lines
+                        view.presentScene(sceneNode)
+                    }
                 }
             }
         }

@@ -62,6 +62,8 @@ class GameScene: SKScene {
     var lines = 0
     var scoreLabel: SKLabelNode!
     var linesLabel: SKLabelNode!
+    var nextPieceTileMap: SKTileMapNode!
+    
     var gameField: SKTileMapNode!
     let columns = 12
     let rows = 22
@@ -75,6 +77,7 @@ class GameScene: SKScene {
 
     var fallingPieceLayer: Array2D!
     var fallingPiece: Piece!
+    var nextFallingPiece: Piece!
 
     var tileSet: SKTileSet!
     var blueBrick: SKTileGroup!
@@ -109,6 +112,8 @@ class GameScene: SKScene {
         scoreLabel.text = String(score)
         linesLabel = childNode(withName: "linesLabel") as? SKLabelNode
         linesLabel.text = String(lines)
+
+        nextPieceTileMap = childNode(withName: "nextPieceTileMap") as? SKTileMapNode
         
         let swipeLeftGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
         swipeLeftGestureRecognizer.direction = .left
@@ -168,18 +173,39 @@ class GameScene: SKScene {
             direction = .down
         }
 
-        if fallingPiece == nil {
-            fallingPiece = generateNewPiece()
-            initialPosition()
+        if nextFallingPiece == nil {
+            if fallingPiece == nil {
+                fallingPiece = generateNewPiece()
+                initialPosition()
+            }
+
+            nextFallingPiece = generateNewPiece()
+            updateNextPieceTileMap()
         }
 
         if move(piece: fallingPiece, direction: direction) == .blocked{
-            fallingPiece = nil
+            fallingPiece = nextFallingPiece
+            initialPosition()
+            nextFallingPiece = nil
         }
         updateGameField()
 
         previousDirection = direction
         direction = .down
+    }
+
+    func updateNextPieceTileMap() {
+        for col in 0..<4 {
+            for row in 0..<4 {
+                nextPieceTileMap.setTileGroup(nil, forColumn: col, row: row)
+            }
+        }
+
+        for col in 0..<nextFallingPiece.array.columns {
+            for row in 0..<nextFallingPiece.array.rows {
+                nextPieceTileMap.setTileGroup(getTileForNumber(number: nextFallingPiece[col, row]), forColumn: col, row: row)
+            }
+        }
     }
 
     func setupTiles() {

@@ -7,14 +7,22 @@
 //
 
 import SpriteKit
+import GameKit
 import GameplayKit
 
 class GameViewController: UIViewController {
 
     var currentScene: SKScene?
+    var player: GKLocalPlayer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(showAuthenticationViewController),
+                                               name: .presentAuthenticationViewController ,
+                                               object: nil)
+        GameKitHelper.shared.autehenticateLocalUser()
         
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
         // including entities and graphs.
@@ -44,4 +52,11 @@ class GameViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
+
+    @objc func showAuthenticationViewController() {
+        present(GameKitHelper.shared.authenticationVC!,
+                animated: true,
+                completion: nil)
+    }
+
 }

@@ -22,6 +22,7 @@
 		50678FDD21502F2D00E84CF7 /* ScoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50678FDC21502F2D00E84CF7 /* ScoreScene.swift */; };
 		50B86BEF21524A920020DC87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50B86BEE21524A920020DC87 /* Assets.xcassets */; };
 		50BF89E3215FA1FC00B15B7E /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BF89E2215FA1FC00B15B7E /* GameOverScene.swift */; };
+		50BF89E62160C73700B15B7E /* GameKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BF89E52160C73700B15B7E /* GameKitHelper.swift */; };
 		50D44AD5215F9E1600E9B9D8 /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 50D44AD4215F9E1600E9B9D8 /* GameOverScene.sks */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		50678FDC21502F2D00E84CF7 /* ScoreScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreScene.swift; sourceTree = "<group>"; };
 		50B86BEE21524A920020DC87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50BF89E2215FA1FC00B15B7E /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		50BF89E52160C73700B15B7E /* GameKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameKitHelper.swift; sourceTree = "<group>"; };
 		50D44AD4215F9E1600E9B9D8 /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 		50678FB1214F838000E84CF7 /* tetris */ = {
 			isa = PBXGroup;
 			children = (
+				50BF89E42160C71900B15B7E /* GameCenter */,
 				50B86BEE21524A920020DC87 /* Assets.xcassets */,
 				5010F3F82152450F008FFB69 /* Tile Sets */,
 				50678FB2214F838000E84CF7 /* AppDelegate.swift */,
@@ -132,6 +135,14 @@
 				50678FCC214F838200E84CF7 /* Info.plist */,
 			);
 			path = tetrisTests;
+			sourceTree = "<group>";
+		};
+		50BF89E42160C71900B15B7E /* GameCenter */ = {
+			isa = PBXGroup;
+			children = (
+				50BF89E52160C73700B15B7E /* GameKitHelper.swift */,
+			);
+			path = GameCenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50BF89E62160C73700B15B7E /* GameKitHelper.swift in Sources */,
 				50678FB9214F838000E84CF7 /* GameScene.swift in Sources */,
 				5041502A2152C0FE009962B0 /* Array2D.swift in Sources */,
 				50BF89E3215FA1FC00B15B7E /* GameOverScene.swift in Sources */,
@@ -404,7 +416,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tetris;
+				PRODUCT_BUNDLE_IDENTIFIER = com.balintzsombor.tetris;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -423,7 +435,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tetris;
+				PRODUCT_BUNDLE_IDENTIFIER = com.balintzsombor.tetris;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;

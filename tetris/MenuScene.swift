@@ -8,6 +8,7 @@
 
 import UIKit
 import SpriteKit
+import GameKit
 import GameplayKit
 
 class MenuScene: SKScene {
@@ -33,8 +34,10 @@ class MenuScene: SKScene {
                 view.presentScene(sceneNode)
             }
         } else if scoresButton.isFocused == true {
-            if let scene = GKScene(fileNamed: "ScoreScene"), let sceneNode = scene.rootNode as! ScoreScene?, let view = self.view {
-                view.presentScene(sceneNode)
+            if GameKitHelper.shared.enableGameCenter {
+                let gcVC = GKGameCenterViewController()
+                gcVC.gameCenterDelegate = view?.window?.rootViewController as? GameViewController
+                view?.window?.rootViewController?.present(gcVC, animated: true, completion: nil)
             }
         }
     }

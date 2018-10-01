@@ -10,7 +10,7 @@ import SpriteKit
 import GameKit
 import GameplayKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, GKGameCenterControllerDelegate {
 
     var currentScene: SKScene?
     var player: GKLocalPlayer?
@@ -59,4 +59,7 @@ class GameViewController: UIViewController {
                 completion: nil)
     }
 
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated: true, completion: nil)
+    }
 }

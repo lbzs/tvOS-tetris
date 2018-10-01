@@ -12,6 +12,7 @@ import UIKit
 class GameKitHelper {
 
     var enableGameCenter = false
+    var leaderboardIdentifier = String()
     var authenticationVC: UIViewController? {
         didSet(newAuthenticationVC) {
             NotificationCenter.default.post(name: .presentAuthenticationViewController, object: self)
@@ -28,7 +29,7 @@ class GameKitHelper {
     static let shared = GameKitHelper()
 
     func autehenticateLocalUser() {
-        let player = GKLocalPlayer.localPlayer()
+        let player = GKLocalPlayer.local
 
         player.authenticateHandler = { [weak self](viewController, error) -> Void in
             if error != nil {
@@ -40,6 +41,14 @@ class GameKitHelper {
     
             } else if player.isAuthenticated {
                 self?.enableGameCenter = true
+
+                player.loadDefaultLeaderboardIdentifier(completionHandler: { (identifier, error) in
+                    if error != nil {
+                        self?.error = error
+                    } else if identifier != nil {
+                        self?.leaderboardIdentifier = identifier!
+                    }
+                })
             } else {
                 self?.enableGameCenter = false
             }

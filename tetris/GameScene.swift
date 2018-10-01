@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import GameKit
 import GameplayKit
 
 struct Piece {
@@ -140,16 +141,16 @@ class GameScene: SKScene {
 
     @objc func swiped(gesture : UISwipeGestureRecognizer) {
         switch gesture.direction {
-        case UISwipeGestureRecognizerDirection.left:
+        case UISwipeGestureRecognizer.Direction.left:
             direction = .left
-        case UISwipeGestureRecognizerDirection.right:
+        case UISwipeGestureRecognizer.Direction.right:
             direction = .right
-        case UISwipeGestureRecognizerDirection.up:
+        case UISwipeGestureRecognizer.Direction.up:
             if canRotate(direction: .left) {
                 fallingPiece.rotate(direction: .left)
                 updateFallingLayer()
             }
-        case UISwipeGestureRecognizerDirection.down:
+        case UISwipeGestureRecognizer.Direction.down:
             if canRotate(direction: .right) {
                 fallingPiece.rotate(direction: .right)
                 updateFallingLayer()
@@ -491,6 +492,17 @@ class GameScene: SKScene {
                 } else {
                     gameOver = true
                     if let scene = GKScene(fileNamed: "GameOverScene"), let sceneNode = scene.rootNode as! GameOverScene?, let view = self.view {
+
+                        if GameKitHelper.shared.enableGameCenter {
+                            let score = GKScore(leaderboardIdentifier: GameKitHelper.shared.leaderboardIdentifier)
+                            score.value = Int64(self.score)
+                            GKScore.report([score]) { (error) in
+                                if error != nil {
+                                    GameKitHelper.shared.error = error
+                                }
+                            }
+                        }
+
                         sceneNode.score = score
                         sceneNode.lines = lines
                         view.presentScene(sceneNode)

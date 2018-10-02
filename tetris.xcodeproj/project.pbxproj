@@ -18,8 +18,6 @@
 		50678FCB214F838200E84CF7 /* tetrisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50678FCA214F838200E84CF7 /* tetrisTests.swift */; };
 		50678FD62150058000E84CF7 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50678FD52150058000E84CF7 /* MenuScene.swift */; };
 		50678FD921502D9300E84CF7 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 50678FD821502D9300E84CF7 /* GameScene.sks */; };
-		50678FDB21502E3400E84CF7 /* ScoreScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 50678FDA21502E3400E84CF7 /* ScoreScene.sks */; };
-		50678FDD21502F2D00E84CF7 /* ScoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50678FDC21502F2D00E84CF7 /* ScoreScene.swift */; };
 		50B86BEF21524A920020DC87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50B86BEE21524A920020DC87 /* Assets.xcassets */; };
 		50BF89E3215FA1FC00B15B7E /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BF89E2215FA1FC00B15B7E /* GameOverScene.swift */; };
 		50BF89E62160C73700B15B7E /* GameKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BF89E52160C73700B15B7E /* GameKitHelper.swift */; };
@@ -52,8 +50,6 @@
 		50678FCC214F838200E84CF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50678FD52150058000E84CF7 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		50678FD821502D9300E84CF7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		50678FDA21502E3400E84CF7 /* ScoreScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ScoreScene.sks; sourceTree = "<group>"; };
-		50678FDC21502F2D00E84CF7 /* ScoreScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreScene.swift; sourceTree = "<group>"; };
 		50B86BEE21524A920020DC87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50BF89E2215FA1FC00B15B7E /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		50BF89E52160C73700B15B7E /* GameKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameKitHelper.swift; sourceTree = "<group>"; };
@@ -113,12 +109,10 @@
 				50678FB2214F838000E84CF7 /* AppDelegate.swift */,
 				50678FB4214F838000E84CF7 /* MenuScene.sks */,
 				50678FD821502D9300E84CF7 /* GameScene.sks */,
-				50678FDA21502E3400E84CF7 /* ScoreScene.sks */,
 				50D44AD4215F9E1600E9B9D8 /* GameOverScene.sks */,
 				50678FB6214F838000E84CF7 /* Actions.sks */,
 				50678FB8214F838000E84CF7 /* GameScene.swift */,
 				50678FD52150058000E84CF7 /* MenuScene.swift */,
-				50678FDC21502F2D00E84CF7 /* ScoreScene.swift */,
 				50678FBA214F838000E84CF7 /* GameViewController.swift */,
 				50678FBC214F838000E84CF7 /* Main.storyboard */,
 				50678FC1214F838200E84CF7 /* Info.plist */,
@@ -237,7 +231,6 @@
 				50678FB5214F838000E84CF7 /* MenuScene.sks in Resources */,
 				50678FB7214F838000E84CF7 /* Actions.sks in Resources */,
 				50D44AD5215F9E1600E9B9D8 /* GameOverScene.sks in Resources */,
-				50678FDB21502E3400E84CF7 /* ScoreScene.sks in Resources */,
 				50B86BEF21524A920020DC87 /* Assets.xcassets in Resources */,
 				5018224921524CAA005F0196 /* TileSets.sks in Resources */,
 			);
@@ -264,7 +257,6 @@
 				50678FD62150058000E84CF7 /* MenuScene.swift in Sources */,
 				50678FBB214F838000E84CF7 /* GameViewController.swift in Sources */,
 				50678FB3214F838000E84CF7 /* AppDelegate.swift in Sources */,
-				50678FDD21502F2D00E84CF7 /* ScoreScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

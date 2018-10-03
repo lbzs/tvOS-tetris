@@ -142,6 +142,9 @@
                                         <rect key="frame" x="0.0" y="429" width="741" height="86"/>
                                         <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                         <state key="normal" title="OK"/>
+                                        <connections>
+                                            <action selector="okButtonAction:" destination="kyq-gZ-4fz" eventType="primaryActionTriggered" id="7MZ-BD-7TT"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

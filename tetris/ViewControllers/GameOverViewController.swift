@@ -30,4 +30,8 @@ class GameOverViewController: UIViewController {
         dismiss(animated: true, completion: nil)
         presentingViewController?.dismiss(animated: false, completion: nil)
     }
+
+    @IBAction func okButtonAction(_ sender: Any) {
+        menuButtonAction()
+    }
 }

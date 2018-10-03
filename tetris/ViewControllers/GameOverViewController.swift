@@ -19,5 +19,15 @@ class GameOverViewController: UIViewController {
     override func viewDidLoad() {
         scoreLabel.text = String(score)
         linesLabel.text = String(lines)
+        
+        let menuPressRecognizer = UITapGestureRecognizer()
+        menuPressRecognizer.addTarget(self, action: #selector(menuButtonAction))
+        menuPressRecognizer.allowedPressTypes = [NSNumber.init(value: UIPress.PressType.menu.rawValue)]
+        view.addGestureRecognizer(menuPressRecognizer)
+    }
+
+    @objc func menuButtonAction() {
+        dismiss(animated: true, completion: nil)
+        presentingViewController?.dismiss(animated: false, completion: nil)
     }
 }

@@ -35,7 +35,7 @@
                                         <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                         <state key="normal" title="NEW GAME"/>
                                         <connections>
-                                            <segue destination="2yL-6R-BHf" kind="show" identifier="StartGameSegue" id="HDQ-W5-HTL"/>
+                                            <segue destination="2yL-6R-BHf" kind="showDetail" identifier="StartGameSegue" id="HDQ-W5-HTL"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfy-8x-We3">
@@ -75,7 +75,7 @@
                     </view>
                     <connections>
                         <segue destination="lpK-5c-DTu" kind="unwind" unwindAction="unwindToDetailsViewControllerWithSegue:" id="CGB-ui-udV"/>
-                        <segue destination="kyq-gZ-4fz" kind="show" identifier="gameOverSegue" id="YFP-yQ-uXi"/>
+                        <segue destination="kyq-gZ-4fz" kind="showDetail" identifier="gameOverSegue" id="YFP-yQ-uXi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Du-vr-RcI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -142,9 +142,6 @@
                                         <rect key="frame" x="0.0" y="429" width="741" height="86"/>
                                         <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                         <state key="normal" title="OK"/>
-                                        <connections>
-                                            <segue destination="499-42-d0g" kind="showDetail" id="mgz-VN-9V3"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

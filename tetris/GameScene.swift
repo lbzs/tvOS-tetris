@@ -491,22 +491,7 @@ class GameScene: SKScene {
                     fallingPieceLayer[col, row] = fallingPiece[col - to.col, row - to.row]
                 } else {
                     gameOver = true
-                    if let scene = GKScene(fileNamed: "GameOverScene"), let sceneNode = scene.rootNode as! GameOverScene?, let view = self.view {
-
-                        if GameKitHelper.shared.enableGameCenter {
-                            let score = GKScore(leaderboardIdentifier: GameKitHelper.shared.leaderboardIdentifier)
-                            score.value = Int64(self.score)
-                            GKScore.report([score]) { (error) in
-                                if error != nil {
-                                    GameKitHelper.shared.error = error
-                                }
-                            }
-                        }
-
-                        sceneNode.score = score
-                        sceneNode.lines = lines
-                        view.presentScene(sceneNode)
-                    }
+                    NotificationCenter.default.post(name: .presentGameOverViewController, object: nil)
                 }
             }
         }

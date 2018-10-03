@@ -25,9 +25,9 @@ class GameOverScene: SKScene {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if okButton.isFocused {
-            if let scene = GKScene(fileNamed: "MenuScene"), let sceneNode = scene.rootNode as! MenuScene?, let view = self.view {
-                view.presentScene(sceneNode)
-            }
+//            if let scene = GKScene(fileNamed: "MenuScene"), let sceneNode = scene.rootNode as! MenuScene?, let view = self.view {
+//                view.presentScene(sceneNode)
+//            }
         }
     }
 

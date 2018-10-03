@@ -58,5 +58,6 @@ class GameKitHelper {
 
 extension Notification.Name {
     static let presentAuthenticationViewController = NSNotification.Name("presentAuthenticationViewController")
+    static let presentGameOverViewController = NSNotification.Name("presentGameOverViewController")
 }
 

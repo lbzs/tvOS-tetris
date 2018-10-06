@@ -13,7 +13,6 @@ import GameplayKit
 class GameViewController: UIViewController {
 
     var currentScene: GameScene?
-    var player: GKLocalPlayer?
 
     override func viewDidLoad() {
         super.viewDidLoad()

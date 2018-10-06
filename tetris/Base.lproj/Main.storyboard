@@ -52,10 +52,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6df-27-8hi"/>
                     </view>
-                    <connections>
-                        <outlet property="newGameButton" destination="rao-eW-hbI" id="hfh-Oj-GLM"/>
-                        <outlet property="scoresButton" destination="hfy-8x-We3" id="G4u-dJ-sEo"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFW-Nd-Df7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

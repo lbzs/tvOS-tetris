@@ -11,9 +11,6 @@ import GameKit
 
 class MenuViewController: UIViewController, GKGameCenterControllerDelegate {
 
-    @IBOutlet weak var newGameButton: UIButton!
-    @IBOutlet weak var scoresButton: UIButton!
-
     @IBAction func showScores(_ sender: Any) {
         if GameKitHelper.shared.enableGameCenter {
             let gcVC = GKGameCenterViewController()
@@ -25,7 +22,7 @@ class MenuViewController: UIViewController, GKGameCenterControllerDelegate {
     override func viewDidLoad() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(showAuthenticationViewController),
-                                               name: .presentAuthenticationViewController ,
+                                               name: .presentAuthenticationViewController,
                                                object: nil)
         GameKitHelper.shared.autehenticateLocalUser()
     }

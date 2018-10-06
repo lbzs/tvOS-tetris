@@ -14,7 +14,6 @@ class GameOverViewController: UIViewController {
     var lines = 0
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var linesLabel: UILabel!
-    @IBOutlet weak var okButton: UIButton!
 
     override func viewDidLoad() {
         scoreLabel.text = String(score)

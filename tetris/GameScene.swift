@@ -72,6 +72,11 @@ class GameScene: SKScene {
     let height = 32
     let scaleX = 1.754
     let scaleY = 1.524
+    var fallingSpeed = 1 {
+        didSet {
+            view?.preferredFramesPerSecond = fallingSpeed
+        }
+    }
 
     var solidPieceLayer: Array2D!
     var pieces = [Piece]()
@@ -99,7 +104,7 @@ class GameScene: SKScene {
     var gameOver = false
 
     override func didMove(to view: SKView) {
-        self.view?.preferredFramesPerSecond = 1
+        fallingSpeed = 1
 
         solidPieceLayer = Array2D(columns: columns, rows: rows)
         fallingPieceLayer = Array2D(columns: columns + biggestPieceLength * 2, rows: rows + biggestPieceLength, initialNumber: fallingLayerInitialNumber)
@@ -163,9 +168,9 @@ class GameScene: SKScene {
 
     @objc func longPress(gesture : UILongPressGestureRecognizer) {
         if gesture.state == .began {
-            view?.preferredFramesPerSecond = 3
+            fallingSpeed += 3
         } else if gesture.state == .ended {
-            view?.preferredFramesPerSecond = 1
+            fallingSpeed -= 3
         }
         
     }
@@ -448,6 +453,7 @@ class GameScene: SKScene {
                     }
                 }
                 clearedRows += 1
+                fallingSpeed += 1
             }
         }
 

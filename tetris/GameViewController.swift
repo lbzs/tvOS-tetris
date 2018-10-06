@@ -67,9 +67,4 @@ class GameViewController: UIViewController {
     @objc func gameOver() {
         performSegue(withIdentifier: "gameOverSegue", sender: self)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
-    }
 }

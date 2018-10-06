@@ -1,8 +1,9 @@
-// This helper file will help access grid coordinates in your code.
-// If you know the column and row numbers of a specific item, you can
-// index the array as follows: myCookie = cookies[column, row]
-// The notation Array2D<T> means that this struct is a generic and can
-// hold elements of any type T
+//  Array2D.swift
+//  tetris
+//
+//  Created by Balint Zsombor Lakatos on 2018. 09. 29..
+//  Copyright © 2018. Balint Zsombor Lakatos. All rights reserved.
+//
 
 class Array2D {
     let columns: Int

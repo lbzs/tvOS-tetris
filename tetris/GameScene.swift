@@ -10,45 +10,6 @@ import SpriteKit
 import GameKit
 import GameplayKit
 
-struct Piece {
-    var array: Array2D
-    var number: Int
-    
-    subscript(column: Int, row: Int) -> Int {
-        
-        get {
-            return array[column, row]
-        }
-        set {
-            array[column, row] = newValue
-        }
-    }
-
-    mutating func rotate(direction: Direction) {
-        var newArray = Array2D(columns: array.columns, rows: array.rows)
-        let length = array.columns
-
-        switch direction {
-        case .left:
-            for col in 0..<array.columns {
-                for row in 0..<array.rows {
-                    newArray[row, col] = array[col, length - 1 - row];
-                }
-            }
-            array = newArray
-        case .right:
-            for col in 0..<array.columns {
-                for row in 0..<array.rows {
-                    newArray[row, col] = array[length - 1 - col, row];
-                }
-            }
-            array = newArray
-        default:
-            return
-        }
-    }
-}
-
 enum Direction {
     case left, down, right
 }

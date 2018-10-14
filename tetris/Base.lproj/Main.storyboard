@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m32-d3-L9w">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m32-d3-L9w">
                                 <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="Ppu-qO-SpR">
@@ -103,12 +103,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSO-AU-XjD">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSO-AU-XjD">
                                 <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="63" translatesAutoresizingMaskIntoConstraints="NO" id="0Cc-la-U3E">
-                                <rect key="frame" x="590" y="283" width="741" height="515"/>
+                                <rect key="frame" x="590" y="240" width="741" height="515"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME OVER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHC-Yx-1qT">
                                         <rect key="frame" x="0.0" y="0.0" width="741" height="148"/>
@@ -175,7 +175,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="0Cc-la-U3E" firstAttribute="centerX" secondItem="3qs-z4-GMy" secondAttribute="centerX" id="JVW-dT-K5J"/>
-                            <constraint firstItem="0Cc-la-U3E" firstAttribute="centerY" secondItem="3qs-z4-GMy" secondAttribute="centerY" id="o12-B3-RhZ"/>
+                            <constraint firstItem="0Cc-la-U3E" firstAttribute="top" secondItem="k2Q-kE-NXf" secondAttribute="bottom" constant="180" id="be5-sg-DfZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Gbp-bq-YaT"/>
                     </view>

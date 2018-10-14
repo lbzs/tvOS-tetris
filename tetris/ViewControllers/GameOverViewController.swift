@@ -14,7 +14,8 @@ class GameOverViewController: UIViewController {
     var lines = 0
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var linesLabel: UILabel!
-
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    
     override func viewDidLoad() {
         scoreLabel.text = String(score)
         linesLabel.text = String(lines)
@@ -23,6 +24,7 @@ class GameOverViewController: UIViewController {
         menuPressRecognizer.addTarget(self, action: #selector(menuButtonAction))
         menuPressRecognizer.allowedPressTypes = [NSNumber.init(value: UIPress.PressType.menu.rawValue)]
         view.addGestureRecognizer(menuPressRecognizer)
+        backgroundImageView.image = #imageLiteral(resourceName: "background")
     }
 
     @objc func menuButtonAction() {

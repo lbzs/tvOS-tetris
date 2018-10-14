@@ -69,7 +69,7 @@ class GameScene: SKScene {
 
         solidPieceLayer = Array2D(columns: columns, rows: rows)
         fallingPieceLayer = Array2D(columns: columns + biggestPieceLength * 2, rows: rows + biggestPieceLength, initialNumber: fallingLayerInitialNumber)
-        setupPices()
+        setupPieces()
         setupTiles()
 
         gameField = SKTileMapNode(tileSet: tileSet, columns: columns, rows: rows, tileSize: CGSize(width: width, height: height))
@@ -153,7 +153,7 @@ class GameScene: SKScene {
                 updateNextPieceTileMap()
             }
             
-            if move(piece: fallingPiece, direction: direction) == .blocked{
+            if move(piece: fallingPiece, direction: direction) == .blocked {
                 fallingPiece = nextFallingPiece
                 initialPosition()
                 nextFallingPiece = nil
@@ -228,7 +228,7 @@ class GameScene: SKScene {
         self.field = field
     }
 
-    func setupPices() {
+    func setupPieces() {
         var iPiece = Piece(array: Array2D(columns: 4, rows: 4), number: 1)
         iPiece[1,0] = 1
         iPiece[1,1] = 1

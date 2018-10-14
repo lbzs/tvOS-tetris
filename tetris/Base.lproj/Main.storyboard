@@ -22,6 +22,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m32-d3-L9w">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="Ppu-qO-SpR">
                                 <rect key="frame" x="820" y="404" width="280" height="272"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -50,8 +53,17 @@
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="m32-d3-L9w" firstAttribute="top" secondItem="weF-Pa-zaM" secondAttribute="top" id="6j6-ll-QHr"/>
+                            <constraint firstItem="m32-d3-L9w" firstAttribute="width" secondItem="weF-Pa-zaM" secondAttribute="width" id="L9Y-mr-ubp"/>
+                            <constraint firstItem="m32-d3-L9w" firstAttribute="height" secondItem="weF-Pa-zaM" secondAttribute="height" id="aRw-TR-hhK"/>
+                            <constraint firstItem="m32-d3-L9w" firstAttribute="leading" secondItem="weF-Pa-zaM" secondAttribute="leading" id="oMv-T5-uYo"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6df-27-8hi"/>
                     </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="m32-d3-L9w" id="KJn-TI-pfp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFW-Nd-Df7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -91,6 +103,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DSO-AU-XjD">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="63" translatesAutoresizingMaskIntoConstraints="NO" id="0Cc-la-U3E">
                                 <rect key="frame" x="590" y="283" width="741" height="515"/>
                                 <subviews>
@@ -164,8 +180,8 @@
                         <viewLayoutGuide key="safeArea" id="Gbp-bq-YaT"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundImageView" destination="DSO-AU-XjD" id="KEg-rH-eQm"/>
                         <outlet property="linesLabel" destination="CEn-D0-KLC" id="yzD-PX-TtU"/>
-                        <outlet property="okButton" destination="n0J-YB-kxP" id="qJ8-Sa-dE1"/>
                         <outlet property="scoreLabel" destination="4gU-rG-gA2" id="hwV-5O-fbq"/>
                     </connections>
                 </viewController>

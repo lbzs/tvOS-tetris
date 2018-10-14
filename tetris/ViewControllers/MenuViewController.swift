@@ -11,6 +11,8 @@ import GameKit
 
 class MenuViewController: UIViewController, GKGameCenterControllerDelegate {
 
+    @IBOutlet weak var backgroundImageView: UIImageView!
+
     @IBAction func showScores(_ sender: Any) {
         if GameKitHelper.shared.enableGameCenter {
             let gcVC = GKGameCenterViewController()
@@ -25,6 +27,7 @@ class MenuViewController: UIViewController, GKGameCenterControllerDelegate {
                                                name: .presentAuthenticationViewController,
                                                object: nil)
         GameKitHelper.shared.autehenticateLocalUser()
+        backgroundImageView.image = #imageLiteral(resourceName: "background")
     }
 
     @objc func showAuthenticationViewController() {

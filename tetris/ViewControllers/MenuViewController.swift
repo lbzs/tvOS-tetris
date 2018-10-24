@@ -11,6 +11,7 @@ import GameKit
 
 class MenuViewController: UIViewController, GKGameCenterControllerDelegate {
 
+    @IBOutlet weak var difficultySegmentedControl: UISegmentedControl!
     @IBOutlet weak var backgroundImageView: UIImageView!
 
     @IBAction func showScores(_ sender: Any) {
@@ -41,4 +42,9 @@ class MenuViewController: UIViewController, GKGameCenterControllerDelegate {
     }
 
     @IBAction func unwindToDetailsViewController(segue: UIStoryboardSegue) {}
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destinationVC = segue.destination as? GameViewController else { return }
+        destinationVC.difficulty = DifficultyLevel(rawValue: difficultySegmentedControl.selectedSegmentIndex) ?? DifficultyLevel.normal
+    }
 }

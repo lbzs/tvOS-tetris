@@ -10,9 +10,14 @@ import SpriteKit
 import GameKit
 import GameplayKit
 
+enum DifficultyLevel: Int {
+    case normal, hard
+}
+
 class GameViewController: UIViewController {
 
     var currentScene: GameScene?
+    var difficulty: DifficultyLevel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +40,10 @@ class GameViewController: UIViewController {
                 // Present the scene
                 if let view = self.view as! SKView? {
                     currentScene = sceneNode
+                    if difficulty == .hard {
+                        currentScene?.columns = 20
+                    }
+
                     view.presentScene(sceneNode)
                     
                     view.ignoresSiblingOrder = true

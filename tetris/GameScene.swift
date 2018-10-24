@@ -27,7 +27,8 @@ class GameScene: SKScene {
     var nextPieceTileMap: SKTileMapNode!
     
     var gameField: SKTileMapNode!
-    let columns = 12
+    var columns = 12
+    let standardColumsNumber = 12
     let rows = 22
     let width = 32
     let height = 32
@@ -75,6 +76,10 @@ class GameScene: SKScene {
         gameField = SKTileMapNode(tileSet: tileSet, columns: columns, rows: rows, tileSize: CGSize(width: width, height: height))
         gameField.xScale = CGFloat(scaleX)
         gameField.yScale = CGFloat(scaleY)
+        if columns != standardColumsNumber {
+            gameField.position = CGPoint(x: -300, y: 0)
+        }
+        
         addChild(gameField)
 
         scoreLabel = childNode(withName: "scoreLabel") as? SKLabelNode

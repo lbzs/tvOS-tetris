@@ -15,6 +15,7 @@
 		50678FB9214F838000E84CF7 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50678FB8214F838000E84CF7 /* GameScene.swift */; };
 		50678FBE214F838000E84CF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50678FBC214F838000E84CF7 /* Main.storyboard */; };
 		50678FCB214F838200E84CF7 /* tetrisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50678FCA214F838200E84CF7 /* tetrisTests.swift */; };
+		508CB6B2217655A800F02134 /* GameSceneHard.sks in Resources */ = {isa = PBXBuildFile; fileRef = 508CB6B1217655A800F02134 /* GameSceneHard.sks */; };
 		50A27F6D2163B5E3007D158F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A27F6C2163B5E3007D158F /* MenuViewController.swift */; };
 		50A27F6F2163EDDF007D158F /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A27F6E2163EDDF007D158F /* GameOverViewController.swift */; };
 		50B86BEF21524A920020DC87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50B86BEE21524A920020DC87 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		50678FC6214F838200E84CF7 /* tetrisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tetrisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50678FCA214F838200E84CF7 /* tetrisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tetrisTests.swift; sourceTree = "<group>"; };
 		50678FCC214F838200E84CF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		508CB6B1217655A800F02134 /* GameSceneHard.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameSceneHard.sks; sourceTree = "<group>"; };
 		50A27F6C2163B5E3007D158F /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		50A27F6E2163EDDF007D158F /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		50B86BEE21524A920020DC87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				5014A0682168ABC200B83FE4 /* GameScene.sks */,
+				508CB6B1217655A800F02134 /* GameSceneHard.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				50678FBE214F838000E84CF7 /* Main.storyboard in Resources */,
 				5014A0692168ABC200B83FE4 /* GameScene.sks in Resources */,
 				50B86BEF21524A920020DC87 /* Assets.xcassets in Resources */,
+				508CB6B2217655A800F02134 /* GameSceneHard.sks in Resources */,
 				5018224921524CAA005F0196 /* TileSets.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

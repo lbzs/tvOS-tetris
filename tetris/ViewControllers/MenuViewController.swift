@@ -27,7 +27,7 @@ class MenuViewController: UIViewController, GKGameCenterControllerDelegate {
                                                selector: #selector(showAuthenticationViewController),
                                                name: .presentAuthenticationViewController,
                                                object: nil)
-        GameKitHelper.shared.autehenticateLocalUser()
+        GameKitHelper.shared.authenticateLocalUser()
         backgroundImageView.image = #imageLiteral(resourceName: "background")
     }
 

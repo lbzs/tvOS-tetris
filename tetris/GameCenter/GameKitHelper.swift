@@ -28,7 +28,7 @@ class GameKitHelper {
     private init() {}
     static let shared = GameKitHelper()
 
-    func autehenticateLocalUser() {
+    func authenticateLocalUser() {
         let player = GKLocalPlayer.local
 
         player.authenticateHandler = { [weak self](viewController, error) -> Void in

@@ -138,7 +138,6 @@ class GameScene: SKScene {
         } else if gesture.state == .ended {
             fallingSpeed -= 3
         }
-        
     }
 
     override func update(_ currentTime: TimeInterval) {
@@ -292,8 +291,6 @@ class GameScene: SKScene {
     func move(piece: Piece, direction: Direction) -> MoveResult {
 
         var newPositions = [(col: Int,row: Int)]()
-        var positionInPiece = [(col: Int,row: Int)]()
-        var firstCoordinate: (col: Int, row: Int)?
 
         for col in 0..<fallingPieceLayer.columns {
             for row in 0..<fallingPieceLayer.rows {
@@ -328,13 +325,7 @@ class GameScene: SKScene {
                         }
 
                     } else {
-                        
-                        if firstCoordinate == nil {
-                            firstCoordinate = (col: newCoordinate.col, row: newCoordinate.row)
-                        }
-
                         newPositions.append((newCoordinate.col, newCoordinate.row))
-                        positionInPiece.append((newCoordinate.col - firstCoordinate!.col, newCoordinate.row - firstCoordinate!.row))
                     }
                     
                 }

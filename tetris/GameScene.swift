@@ -110,6 +110,10 @@ class GameScene: SKScene {
         view.addGestureRecognizer(longPressGestureRecognizer)
     }
 
+    deinit {
+        gameField = nil
+    }
+
     @objc func swiped(gesture : UISwipeGestureRecognizer) {
         switch gesture.direction {
         case UISwipeGestureRecognizer.Direction.left:

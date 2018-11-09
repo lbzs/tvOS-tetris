@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tetris/GameScene.swift"
-            timestampString = "559083185.541037"
+            timestampString = "563218855.3135771"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
-            landmarkName = "getTileForNumber(number:)"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "setupTiles()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
